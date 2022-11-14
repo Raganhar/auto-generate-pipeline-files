@@ -5,9 +5,7 @@ on:
 
 jobs:
   generate-all-pipeline-files:
-    if: github.ref == 'refs/heads/release'
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - uses: Raganhar/FireStarter@master
