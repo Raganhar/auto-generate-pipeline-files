@@ -1,0 +1,12 @@
+{
+  "Tech": 0,
+  "Projects": [
+    {
+      "Name": "SomeAPi"
+    },
+    {
+      "Name": "SomeBackgroundWorker"
+    }
+  ],
+  "Version": 0
+}
