@@ -1,5 +1,5 @@
 {
-  "Tech": 0,
+  "Tech": "dotnet",
   "Projects": [
     {
       "Name": "SomeAPi"
