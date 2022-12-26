@@ -42,7 +42,7 @@ jobs:
         else
           BRANCH="${GITHUB_REF_NAME}"
           BASE_TAG="${BRANCH##*/}"
-        # fi
+        fi
 
         echo "BRANCH=${BRANCH}" >> $GITHUB_ENV 
         echo "BASE_TAG=${BASE_TAG}" >> $GITHUB_ENV 
