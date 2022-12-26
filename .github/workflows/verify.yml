@@ -33,7 +33,7 @@ jobs:
 
     - name: "Get branch name and save to env"
       env:
-        IS_PR: ${{ github.event_name == 'pull_request' && github.event.workflow_run.event == 'pull_request' }}
+        IS_PR: ${{ github.event_name == 'pull_request'}}
       run: |
         
         if ${IS_PR}; then
