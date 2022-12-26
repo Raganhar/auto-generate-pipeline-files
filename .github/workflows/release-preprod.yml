@@ -1,7 +1,7 @@
 name: Release preprod [DEV03]    
 
 on:
-  create:
+  push:
     tags:
       - main.**
   workflow_dispatch:
