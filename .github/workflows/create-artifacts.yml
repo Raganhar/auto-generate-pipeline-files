@@ -24,16 +24,19 @@ jobs:
       run: |
         
         if ${IS_PR}; then
-          BASE_TAG="${{github.event.workflow_run.head_branch}}"
+          BRANCH="${{github.event.workflow_run.head_branch}}"
+          BASE_TAG="${BRANCH##*/}"
         else
+          BRANCH="${GITHUB_REF##*/}"
           BASE_TAG="${GITHUB_REF##*/}"
         fi
 
+        echo "BRANCH=${BRANCH}" >> $GITHUB_ENV 
         echo "BASE_TAG=${BASE_TAG}" >> $GITHUB_ENV 
     - name: Checkout
       uses: actions/checkout@v3
       with:
-          ref: release 
+          ref: ${BRANCH} 
           token: ${{ secrets.MY_PAT }}
           fetch-depth: 0
 
