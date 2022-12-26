@@ -1,7 +1,7 @@
 name: Release QA [STAGE02]      
 
 on:
-  create:
+  push:
     tags:
       - release.**
   workflow_dispatch:
