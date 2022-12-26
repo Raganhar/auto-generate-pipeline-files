@@ -17,7 +17,6 @@ jobs:
       run: |
         echo "$GITHUB_CONTEXT"
 
-
     - name: "Get branch name and save to env"
       env:
         IS_PR: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.event == 'pull_request' }}
