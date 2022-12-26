@@ -1,14 +1,11 @@
 name: Release QA [STAGE02]      
 
 on:
-  workflow_run:
-    workflows:
-      - Promote dev
-    types:
-      - completed
-  push:
-    branches:
-      - "release"
+  create:
+    tags:
+      - 'release.*'
+  workflow_dispatch:
+
 jobs:
   release-SomeAPi-service:
     secrets: inherit

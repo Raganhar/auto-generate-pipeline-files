@@ -1,10 +1,9 @@
 name: Release preprod [DEV03]    
 
 on:
-  push:
-    branches:
-      - main
-
+  create:
+    tags:
+      - 'main.*'
   workflow_dispatch:
 
 jobs:

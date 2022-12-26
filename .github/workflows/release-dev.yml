@@ -1,9 +1,10 @@
 name: Release dev [DEV02]
 
 on:
-  push:
-    branches:
-      - dev
+  create:
+    tags: dev.*
+  workflow_dispatch:
+
 jobs:
   release-SomeAPi-service:
     secrets: inherit
