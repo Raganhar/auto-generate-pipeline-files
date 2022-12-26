@@ -36,13 +36,13 @@ jobs:
         IS_PR: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.event == 'pull_request' }}
       run: |
         
-      # if ${IS_PR}; then
-      #   BRANCH="${{github.event.workflow_run.head_branch}}"
-      #   BASE_TAG="${BRANCH##*/}"
-      # else
+        # if ${IS_PR}; then
+        #   BRANCH="${{github.event.workflow_run.head_branch}}"
+        #   BASE_TAG="${BRANCH##*/}"
+        # else
           BRANCH="${GITHUB_REF_NAME}"
           BASE_TAG="${BRANCH##*/}"
-      # fi
+        # fi
 
         echo "BRANCH=${BRANCH}" >> $GITHUB_ENV 
         echo "BASE_TAG=${BASE_TAG}" >> $GITHUB_ENV 
