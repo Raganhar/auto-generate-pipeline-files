@@ -109,10 +109,10 @@ jobs:
           ECR_REPOSITORY: ${{ env.CONTAINER_IMAGE_NAME }}
         run: |
           echo "pulling image from ghcr"
-          docker pull ghcr.io/${github.repository_owner}/${{steps.lower_repo.outputs.lowercase}}:${{env.TAG}}
+          docker pull ghcr.io/${{github.repository_owner}}/${{steps.lower_repo.outputs.lowercase}}:${{env.TAG}}
           
           echo "renaming/tagging image from to be the same as ECR image"
-          docker tag ghcr.io/${github.repository_owner}/${{steps.lower_repo.outputs.lowercase}}:${{env.TAG}} $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          docker tag ghcr.io/${{github.repository_owner}}/${{steps.lower_repo.outputs.lowercase}}:${{env.TAG}} $ECR_REGISTRY/$ECR_REPOSITORY:latest
           
           echo "pushing image to ecr"
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
@@ -132,27 +132,3 @@ jobs:
           ECS_CLUSTER: ${{ inputs.prefix }}-${{ inputs.cluster }}
         run: |
           aws ecs wait services-stable --cluster $ECS_CLUSTER --service $ECS_SERVICE
-      
-      # - name: Build, tag, and push image to Amazon ECR
-      #   id: build-image
-      #   env:
-      #     ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-      #     IMAGE_TAG: ${{ github.sha }}
-      #     ECR_REPOSITORY: ${{ env.CONTAINER_IMAGE_NAME }}
-      #     DOCKERFILE: ${{ inputs.dockerfile }}
-      #   run: |
-      #     # Build and tag image
-      #     docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f $DOCKERFILE .
-      #     docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
-      #     # Push image
-      #     docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-      #     docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
-      #     # echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-
-      # - name: Update ECS image version
-      #   id: use-image
-      #   env:
-      #     ECS_SERVICE: ${{ inputs.prefix }}-${{ inputs.service_name }}
-      #     ECS_CLUSTER: ${{ inputs.prefix }}-${{ inputs.cluster }}
-      #   run: |
-      #     aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment 
