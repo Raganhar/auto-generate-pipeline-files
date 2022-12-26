@@ -3,7 +3,7 @@ name: Release QA [STAGE02]
 on:
   create:
     tags:
-      - 'release.*'
+      - release.**
   workflow_dispatch:
 
 jobs:

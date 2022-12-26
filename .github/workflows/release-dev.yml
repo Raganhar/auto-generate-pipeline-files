@@ -3,7 +3,7 @@ name: Release dev [DEV02]
 on:
   create:
     tags: 
-      - "dev.*"
+      - dev.**
   workflow_dispatch:
 
 jobs:

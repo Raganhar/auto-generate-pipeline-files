@@ -3,7 +3,7 @@ name: Release preprod [DEV03]
 on:
   create:
     tags:
-      - 'main.*'
+      - main.**
   workflow_dispatch:
 
 jobs:
