@@ -26,8 +26,10 @@ jobs:
           BRANCH="${{github.event.workflow_run.head_branch}}"
           BASE_TAG="${BRANCH##*/}"
         else
-          BRANCH="${GITHUB_REF##*/}"
-          BASE_TAG="${GITHUB_REF##*/}"
+          BRANCH="${{github.event.workflow_run.head_branch}}"
+          BASE_TAG="${BRANCH##*/}"
+    # BRANCH="${GITHUB_REF##*/}"
+    # BASE_TAG="${GITHUB_REF##*/}"
         fi
 
         echo "BRANCH=${BRANCH}" >> $GITHUB_ENV 
