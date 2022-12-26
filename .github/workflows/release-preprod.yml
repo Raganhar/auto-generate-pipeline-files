@@ -1,0 +1,50 @@
+name: Release preprod [DEV03]    
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  create-tag:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set Tag Name
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+    - name: Create tag
+      uses: actions/github-script@v5
+      with:
+        script: |
+          github.rest.git.createRef({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            ref: 'refs/tags/${{ steps.date.outputs.date }}',
+            sha: context.sha
+          })
+
+  release-SomeAPi-service:
+    secrets: inherit
+    uses: ./.github/workflows/release-reuse.yml
+    with:
+      environment: dev03
+      prefix: dev03
+      cluster: autoproff-cluster
+      service_name: SomeAPi-service
+      dockerfile: "Dockerfile"
+      branch_name: main
+      
+
+  release-SomeBackgroundWorker-service:
+    secrets: inherit
+    uses: ./.github/workflows/release-reuse.yml
+    with:
+      environment: dev03
+      prefix: dev03
+      cluster: autoproff-cluster
+      service_name: SomeBackgroundWorker-service
+      dockerfile: "Dockerfile"
+      branch_name: main
+      

@@ -1,12 +1,22 @@
 {
-  "Tech": "dotnet",
   "Projects": [
     {
-      "Name": "SomeAPi"
+      "Name": "SomeAPi",
+      "DockerFile": "Dockerfile",
+      "ServiceName": "SomeAPi-service",
+      "TestFilter": "",
+      "LegacyProperties": null,
+      "Tech": 1
     },
     {
-      "Name": "SomeBackgroundWorker"
+      "Name": "SomeBackgroundWorker",
+      "DockerFile": "Dockerfile",
+      "ServiceName": "SomeBackgroundWorker-service",
+      "TestFilter": "",
+      "LegacyProperties": null,
+      "Tech": 1
     }
   ],
-  "Version": 0
+  "Version": 1,
+  "LegacySystem": null
 }

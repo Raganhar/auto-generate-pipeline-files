@@ -1,0 +1,16 @@
+name: verify
+
+on:
+  pull_request:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+      - uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '6.x'
+      - run: dotnet restore
+      - run: dotnet build --no-restore
+      - run: dotnet test --no-build --no-restore  --filter Category!=SanityTest

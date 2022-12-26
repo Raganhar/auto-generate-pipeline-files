@@ -1,0 +1,30 @@
+name: Release dev [DEV02]
+
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  release-SomeAPi-service:
+    secrets: inherit
+    uses: ./.github/workflows/release-reuse.yml
+    with:
+      environment: dev02
+      prefix: dev
+      cluster: autoproff-cluster
+      service_name: SomeAPi-service
+      dockerfile: "Dockerfile"
+      branch_name: dev
+      
+
+  release-SomeBackgroundWorker-service:
+    secrets: inherit
+    uses: ./.github/workflows/release-reuse.yml
+    with:
+      environment: dev02
+      prefix: dev
+      cluster: autoproff-cluster
+      service_name: SomeBackgroundWorker-service
+      dockerfile: "Dockerfile"
+      branch_name: dev
+      

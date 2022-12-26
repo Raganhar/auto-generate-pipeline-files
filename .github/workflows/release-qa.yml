@@ -1,0 +1,35 @@
+name: Release QA [STAGE02]      
+
+on:
+  workflow_run:
+    workflows:
+      - Promote dev
+    types:
+      - completed
+  push:
+    branches:
+      - "release"
+jobs:
+  release-SomeAPi-service:
+    secrets: inherit
+    uses: ./.github/workflows/release-reuse.yml
+    with:
+      environment: stage02
+      prefix: stage
+      cluster: autoproff-cluster
+      service_name: SomeAPi-service
+      dockerfile: "Dockerfile"
+      branch_name: release
+      
+
+  release-SomeBackgroundWorker-service:
+    secrets: inherit
+    uses: ./.github/workflows/release-reuse.yml
+    with:
+      environment: stage02
+      prefix: stage
+      cluster: autoproff-cluster
+      service_name: SomeBackgroundWorker-service
+      dockerfile: "Dockerfile"
+      branch_name: release
+      
