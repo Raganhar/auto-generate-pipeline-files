@@ -2,7 +2,7 @@ name: Release dev [DEV02]
 
 on:
   push:
-    tags: 
+    tags:
       - dev.**
   workflow_dispatch:
 
