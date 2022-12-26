@@ -32,6 +32,7 @@ jobs:
         
         if ${IS_PR}; then
           BASE_TAG="${{github.event.workflow_run.head_branch}}"
+          BASE_TAG="${BASE_TAG##*/}"
         else
           BASE_TAG="${GITHUB_REF##*/}"
         fi
