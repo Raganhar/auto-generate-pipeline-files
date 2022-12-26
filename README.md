@@ -1,3 +1,1 @@
 # auto-generate-pipeline-files
-
-
