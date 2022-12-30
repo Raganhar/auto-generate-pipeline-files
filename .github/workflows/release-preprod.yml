@@ -32,7 +32,6 @@ jobs:
       prefix: dev03
       cluster: autoproff-cluster
       service_name: SomeAPi-service
-      dockerfile: "Dockerfile"
       branch_name: main
       
 
@@ -44,6 +43,5 @@ jobs:
       prefix: dev03
       cluster: autoproff-cluster
       service_name: SomeBackgroundWorker-service
-      dockerfile: "Dockerfile"
       branch_name: main
       

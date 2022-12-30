@@ -3,7 +3,7 @@ name: Release dev [DEV02]
 on:
   push:
     tags:
-      - dev.**
+      - main.**
   workflow_dispatch:
 
 jobs:
@@ -15,7 +15,6 @@ jobs:
       prefix: dev
       cluster: autoproff-cluster
       service_name: SomeAPi-service
-      dockerfile: "Dockerfile"
       branch_name: dev
       
 
@@ -27,6 +26,5 @@ jobs:
       prefix: dev
       cluster: autoproff-cluster
       service_name: SomeBackgroundWorker-service
-      dockerfile: "Dockerfile"
       branch_name: dev
       

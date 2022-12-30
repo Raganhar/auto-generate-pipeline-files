@@ -3,7 +3,7 @@ name: Release QA [STAGE02]
 on:
   push:
     tags:
-      - release.**
+      - main.**
   workflow_dispatch:
 
 jobs:
@@ -15,7 +15,6 @@ jobs:
       prefix: stage
       cluster: autoproff-cluster
       service_name: SomeAPi-service
-      dockerfile: "Dockerfile"
       branch_name: release
       
 
@@ -27,6 +26,5 @@ jobs:
       prefix: stage
       cluster: autoproff-cluster
       service_name: SomeBackgroundWorker-service
-      dockerfile: "Dockerfile"
       branch_name: release
       

@@ -12,7 +12,6 @@ jobs:
       prefix: prod
       cluster: autoproff-cluster
       service_name: SomeAPi-service
-      dockerfile: "Dockerfile"
       branch_name: main
       
 
@@ -24,7 +23,6 @@ jobs:
       prefix: prod
       cluster: autoproff-cluster
       service_name: SomeBackgroundWorker-service
-      dockerfile: "Dockerfile"
       branch_name: main
       
 
