@@ -3,7 +3,7 @@ name: Release QA [STAGE02]
 on:
   push:
     tags:
-      - release.**
+      - main.**
   workflow_dispatch:
 
 jobs:
@@ -11,22 +11,20 @@ jobs:
     secrets: inherit
     uses: ./.github/workflows/release-reuse.yml
     with:
-      environment: stage02
+      environment: stage
       prefix: stage
       cluster: autoproff-cluster
       service_name: SomeAPi-service
-      dockerfile: "Dockerfile"
-      branch_name: release
+      branch_name: main
       
 
   release-SomeBackgroundWorker-service:
     secrets: inherit
     uses: ./.github/workflows/release-reuse.yml
     with:
-      environment: stage02
+      environment: stage
       prefix: stage
       cluster: autoproff-cluster
       service_name: SomeBackgroundWorker-service
-      dockerfile: "Dockerfile"
-      branch_name: release
+      branch_name: main
       
