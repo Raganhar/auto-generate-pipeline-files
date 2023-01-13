@@ -2,17 +2,19 @@ name: Release prod [PROD02]
 
 on:
   workflow_dispatch:
+  push:
+    tags:
+      - main.**
 
 jobs:
   release-SomeAPi-service:
     secrets: inherit
     uses: ./.github/workflows/release-reuse.yml
     with:
-      environment: prod02
+      environment: prod
       prefix: prod
       cluster: autoproff-cluster
       service_name: SomeAPi-service
-      dockerfile: "Dockerfile"
       branch_name: main
       
 
@@ -20,11 +22,10 @@ jobs:
     secrets: inherit
     uses: ./.github/workflows/release-reuse.yml
     with:
-      environment: prod02
+      environment: prod
       prefix: prod
       cluster: autoproff-cluster
       service_name: SomeBackgroundWorker-service
-      dockerfile: "Dockerfile"
       branch_name: main
       
 
