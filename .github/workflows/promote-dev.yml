@@ -2,8 +2,8 @@ name: Promote dev
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * 1,2,3,4,5' # UTC time
+  #schedule:
+    #- cron: '0 0 * * 1,2,3,4,5' # UTC time
 
 jobs:
   create-branch:
